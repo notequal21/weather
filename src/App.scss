@@ -1,0 +1,25 @@
+
+
+@import '~antd/dist/antd.css';
+@import '_normalize.scss';
+
+
+::selection {}
+
+body {
+  overflow: auto; // <--- delete this if not necessary
+}
+.container {
+  max-width: 0px; // <--- container res +30px for padding
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 1 auto;
+}
