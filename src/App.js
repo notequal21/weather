@@ -1,8 +1,21 @@
 import './App.scss';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Weather from './components/Weather/Weather';
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
+
+      <Header />
+
+      <div className='content'>
+
+        <Weather />
+
+      </div>
+
+      <Footer />
 
     </div>
   );
