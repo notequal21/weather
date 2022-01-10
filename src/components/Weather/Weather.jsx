@@ -16,10 +16,22 @@ instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units
     store.coord.lat = response.data.coord.lat
     store.weather.desc = response.data.weather[0].description
     store.weather.temp.current = response.data.main.temp
-    store.weather.temp.min = response.data.main.temp
-    store.weather.temp.max = response.data.main.temp
-    store.weather.temp.max = response.data.main.temp
-    console.log(response.data);
+    store.weather.temp.feelsLike = response.data.main.feels_like
+    store.weather.temp.min = response.data.main.temp_max
+    store.weather.temp.max = response.data.main.temp_min
+    // console.log(response.data.main);
+  })
+  .then(() => {
+    instance.get(`onecall?lat=${store.coord.lat}&lon=${store.coord.lon}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
+      .then(response => {
+        store.days.forEach((item, index) => {
+          item.temp.day = response.data.daily[index].temp.day
+          item.temp.feelsLike.day = response.data.daily[index].feels_like.day
+        })
+        // store.days[0].temp.day = response.data.daily[0].temp.day
+        // store.days[0].temp.feelsLike.day = response.data.daily[0].feels_like.day
+        // console.log(response.data.daily[0].temp);
+      })
   })
 
 let CurrentWeather = (props) => {
@@ -36,6 +48,9 @@ let CurrentWeather = (props) => {
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             Temp: {store.weather.temp.current}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            Feels like: {store.weather.temp.feelsLike}
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             TempMin: {store.weather.temp.min}
@@ -66,15 +81,22 @@ let WeatherDay = (props) => {
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            Temp
+            Temp: {props.dayTemp}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            Feels Like: {props.feelsLike}
           </div>
         </div>
       </div>
     </>
   )
 }
-
-let daysList = store.days.map(item => <WeatherDay key={item.id} />)
+let daysList = []
+setInterval(() => {
+  daysList = store.days.map((item, index) => <WeatherDay
+    key={item.id} id={item.id} dayTemp={store.days[index].temp.day}
+    feelsLike={store.days[index].temp.feelsLike.day} />)
+}, 100)
 
 let Weather = () => {
   return (
