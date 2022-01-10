@@ -1,0 +1,32 @@
+.weather {
+  margin: 100px 0 0 0;
+  &__city {
+    font-size: 36px;
+  }
+  &Body {
+    margin: 25px 0 0 0;
+    display: flex;
+    &__title {
+      font-size: 20px;
+    }
+    &__current {
+      border: 1px solid #d9d9d9;
+      padding: 25px;
+      flex: 0 0 300px;
+    }
+    &__days {
+      flex: 1 1 auto;
+      margin: 0 0 0 35px;
+      display: flex;
+      justify-content: space-between;
+      &Item {
+        border: 1px solid #d9d9d9;
+        padding: 25px 15px 25px;
+        flex: 0 0 15.5%;
+        .weatherBody__title {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
