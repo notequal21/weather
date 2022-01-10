@@ -1,28 +1,26 @@
 import { Divider } from "antd"
 import style from "./Weather.module.scss"
+import axios from 'axios';
+import store from '../../store/store'
 
-let days = [
-  {
-    id: 1
-  },
-  {
-    id: 2
-  },
-  {
-    id: 3
-  },
-  {
-    id: 4
-  },
-  {
-    id: 5
-  },
-  {
-    id: 6
-  }
-]
+const instance = axios.create({
+  baseURL: 'https://api.openweathermap.org/data/2.5/'
+})
 
+let location = 'moscow'
 
+instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
+  .then(response => {
+    store.currentLocation = response.data.name
+    store.coord.lon = response.data.coord.lon
+    store.coord.lat = response.data.coord.lat
+    store.weather.desc = response.data.weather[0].description
+    store.weather.temp.current = response.data.main.temp
+    store.weather.temp.min = response.data.main.temp
+    store.weather.temp.max = response.data.main.temp
+    store.weather.temp.max = response.data.main.temp
+    console.log(response.data);
+  })
 
 let CurrentWeather = (props) => {
   return (
@@ -34,7 +32,23 @@ let CurrentWeather = (props) => {
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            Temp
+            Desc: {store.weather.desc}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            Temp: {store.weather.temp.current}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            TempMin: {store.weather.temp.min}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            TempMax: {store.weather.temp.max}
+          </div>
+          <Divider />
+          <div className={`${style.weatherItem__contentItem}`}>
+            Coord lon: {store.coord.lon}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            Coord lat: {store.coord.lat}
           </div>
         </div>
       </div>
@@ -60,7 +74,7 @@ let WeatherDay = (props) => {
   )
 }
 
-let daysList = days.map(item => <WeatherDay key={item.id} />)
+let daysList = store.days.map(item => <WeatherDay key={item.id} />)
 
 let Weather = () => {
   return (
@@ -69,7 +83,7 @@ let Weather = () => {
         <div className="container">
 
           <div className={`${style.weather__city}`}>
-            Your current location: Moscow
+            Your current location: {store.currentLocation}
           </div>
           <Divider />
           <div className={`${style.weatherBody}`}>
