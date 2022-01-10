@@ -1,16 +1,17 @@
 
 
 @import '~antd/dist/antd.css';
-@import '_normalize.scss';
+@import '_normalize.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 ::selection {}
 
 body {
-  overflow: auto; // <--- delete this if not necessary
+  overflow: auto;
 }
 .container {
-  max-width: 0px; // <--- container res +30px for padding
+  max-width: 1430px;
   margin: 0 auto;
   padding: 0 15px;
 }

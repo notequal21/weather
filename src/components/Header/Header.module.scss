@@ -1,0 +1,14 @@
+.header {
+  &Body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    &__logo {
+      font-size: 30px;
+      font-family: montserrat;
+      font-weight: 600;
+    }
+    &__search {}
+  }
+}
