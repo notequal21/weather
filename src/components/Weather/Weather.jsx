@@ -15,22 +15,18 @@ instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units
     store.coord.lon = response.data.coord.lon
     store.coord.lat = response.data.coord.lat
     store.weather.desc = response.data.weather[0].description
-    store.weather.temp.current = response.data.main.temp
-    store.weather.temp.feelsLike = response.data.main.feels_like
-    store.weather.temp.min = response.data.main.temp_max
-    store.weather.temp.max = response.data.main.temp_min
-    // console.log(response.data.main);
+    store.weather.temp.current = Math.round(response.data.main.temp)
+    store.weather.temp.feelsLike = Math.round(response.data.main.feels_like)
+    store.weather.temp.min = Math.round(response.data.main.temp_max)
+    store.weather.temp.max = Math.round(response.data.main.temp_min)
   })
   .then(() => {
     instance.get(`onecall?lat=${store.coord.lat}&lon=${store.coord.lon}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
       .then(response => {
         store.days.forEach((item, index) => {
-          item.temp.day = response.data.daily[index].temp.day
-          item.temp.feelsLike.day = response.data.daily[index].feels_like.day
+          item.temp.day = Math.round(response.data.daily[index].temp.day)
+          item.temp.feelsLike.day = Math.round(response.data.daily[index].feels_like.day)
         })
-        // store.days[0].temp.day = response.data.daily[0].temp.day
-        // store.days[0].temp.feelsLike.day = response.data.daily[0].feels_like.day
-        // console.log(response.data.daily[0].temp);
       })
   })
 
@@ -47,16 +43,16 @@ let CurrentWeather = (props) => {
             Desc: {store.weather.desc}
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Temp: {store.weather.temp.current}
+            Temp: {store.weather.temp.current}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Feels like: {store.weather.temp.feelsLike}
+            Feels like: {store.weather.temp.feelsLike}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            TempMin: {store.weather.temp.min}
+            TempMin: {store.weather.temp.min}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            TempMax: {store.weather.temp.max}
+            TempMax: {store.weather.temp.max}°
           </div>
           <Divider />
           <div className={`${style.weatherItem__contentItem}`}>
@@ -81,10 +77,10 @@ let WeatherDay = (props) => {
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            Temp: {props.dayTemp}
+            Temp: {props.dayTemp}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Feels Like: {props.feelsLike}
+            Feels Like: {props.feelsLike}°
           </div>
         </div>
       </div>
