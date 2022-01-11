@@ -14,6 +14,7 @@ instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units
     store.currentLocation = response.data.name
     store.coord.lon = response.data.coord.lon
     store.coord.lat = response.data.coord.lat
+    store.weather.icon = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     store.weather.desc = response.data.weather[0].description
     store.weather.temp.current = Math.round(response.data.main.temp)
     store.weather.temp.feelsLike = Math.round(response.data.main.feels_like)
@@ -29,7 +30,6 @@ instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units
           item.date.day = new Date(response.data.daily[index].dt * 1000).getDay()
           item.date.current = new Date(response.data.daily[index].dt * 1000)
             .toLocaleString().split(',')[0]
-          // console.log(new Date(response.data.daily[index].dt * 1000).getDay().toLocaleString());
         })
       })
   })
@@ -40,6 +40,9 @@ let CurrentWeather = (props) => {
       <div className={`${style.weatherBody__current}`}>
         <div className={`${style.weatherBody__title}`}>
           Current weather
+        </div>
+        <div className={`${style.weatherBody__ico}`}>
+          <img src={store.weather.icon} alt="" />
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>

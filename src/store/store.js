@@ -6,6 +6,7 @@ let store = {
     lat: 0
   },
   weather: {
+    icon: 'https://openweathermap.org/img/wn/01d@2x.png',
     desc: 'none',
     feelsLike: 0,
     temp: {

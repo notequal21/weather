@@ -6,6 +6,14 @@
   &Body {
     margin: 25px 0 0 0;
     display: flex;
+    &__ico {
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
     &__title {
       font-size: 20px;
     }
