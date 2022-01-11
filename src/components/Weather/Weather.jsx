@@ -2,7 +2,6 @@ import { Divider } from "antd"
 import style from "./Weather.module.scss"
 import axios from 'axios';
 import store from '../../store/store'
-import { useState } from "react";
 
 export const getWeatherInfo = () => {
   const instance = axios.create({
@@ -29,7 +28,7 @@ export const getWeatherInfo = () => {
             item.temp.feelsLike.day = Math.round(response.data.daily[index].feels_like.day)
             item.date.day = new Date(response.data.daily[index].dt * 1000).getDay()
             item.date.current = new Date(response.data.daily[index].dt * 1000)
-              .toLocaleString().split(',')[0]
+              .toLocaleString().split(',')[0].split('.')
           })
         })
     })
@@ -73,27 +72,33 @@ let CurrentWeather = (props) => {
 
 let WeatherDay = (props) => {
 
-  let currentDay = props.day
+  const weekDays = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота'
+  ]
 
-  let setCurrentDay = () => {
-    if (currentDay === 0) {
-      currentDay = 'Воскресенье'
-    } else if (currentDay === 1) {
-      currentDay = 'Понедельник'
-    } else if (currentDay === 2) {
-      currentDay = 'Вторник'
-    } else if (currentDay === 3) {
-      currentDay = 'Среда'
-    } else if (currentDay === 4) {
-      currentDay = 'Четверг'
-    } else if (currentDay === 5) {
-      currentDay = 'Пятница'
-    } else if (currentDay === 6) {
-      currentDay = 'Суббота'
-    }
-  }
+  let currentDay = weekDays[props.day]
 
-  setCurrentDay()
+  const monthsList = [
+    'Января',
+    'Февраля',
+    'Марта',
+    'Апреля',
+    'Мая',
+    'Июня',
+    'Июля',
+    'Августа',
+    'Сентября',
+    'Ноября',
+    'Декабря',
+  ];
+
+  let currentMonth = monthsList[Number(props.date[1])]
 
   return (
     <>
@@ -101,7 +106,8 @@ let WeatherDay = (props) => {
         <div className={`${style.weatherBody__title}`}>
           {currentDay}
           <br />
-          {props.date}
+          {/* {props.date} */}
+          {props.date[0]} {currentMonth}
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>
