@@ -18,8 +18,8 @@ let store = {
 
   days: [
     {
+      icon: '',
       id: 0,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -32,8 +32,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 1,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -46,8 +46,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 2,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -60,8 +60,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 3,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -74,8 +74,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 4,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -88,8 +88,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 5,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -102,8 +102,8 @@ let store = {
       }
     },
     {
+      icon: '',
       id: 6,
-      icon: '',
       date: {
         day: '',
         current: '',
@@ -116,8 +116,8 @@ let store = {
       }
     },
     {
-      id: 7,
       icon: '',
+      id: 7,
       date: {
         day: '',
         current: '',
