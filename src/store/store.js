@@ -19,6 +19,7 @@ let store = {
   days: [
     {
       id: 0,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -32,6 +33,7 @@ let store = {
     },
     {
       id: 1,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -45,6 +47,7 @@ let store = {
     },
     {
       id: 2,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -58,6 +61,7 @@ let store = {
     },
     {
       id: 3,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -71,6 +75,7 @@ let store = {
     },
     {
       id: 4,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -84,6 +89,7 @@ let store = {
     },
     {
       id: 5,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -97,6 +103,7 @@ let store = {
     },
     {
       id: 6,
+      icon: '',
       date: {
         day: '',
         current: '',
@@ -110,6 +117,7 @@ let store = {
     },
     {
       id: 7,
+      icon: '',
       date: {
         day: '',
         current: '',

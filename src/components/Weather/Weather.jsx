@@ -24,6 +24,7 @@ export const getWeatherInfo = () => {
       instance.get(`onecall?lat=${store.coord.lat}&lon=${store.coord.lon}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
         .then(response => {
           store.days.forEach((item, index) => {
+            item.icon = response.data.daily[index].weather[0].icon
             item.temp.day = Math.round(response.data.daily[index].temp.day)
             item.temp.feelsLike.day = Math.round(response.data.daily[index].feels_like.day)
             item.date.day = new Date(response.data.daily[index].dt * 1000).getDay()
@@ -106,16 +107,15 @@ let WeatherDay = (props) => {
         <div className={`${style.weatherBody__title}`}>
           {currentDay}
           <br />
-          {/* {props.date} */}
           {props.date[0]} {currentMonth}
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            Temp: {props.dayTemp}°
+            Температура {props.dayTemp}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Feels Like: {props.feelsLike}°
+            Ощущается как {props.feelsLike}°
           </div>
         </div>
       </div>
