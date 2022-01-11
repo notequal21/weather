@@ -1,6 +1,8 @@
 import style from "./Header.module.scss"
 import { Input } from 'antd';
 import logoIco from '../../assets/icons/sun.png'
+import store from "../../store/store";
+import { getWeatherInfo } from "../Weather/Weather";
 
 const { Search } = Input;
 
@@ -16,7 +18,8 @@ let Header = () => {
             <div className={`${style.headerbody__search}`}>
               <Search
                 onSearch={(value) => {
-                  console.log(value)
+                  store.currentLocation = value
+                  getWeatherInfo()
                 }}
                 size="large" placeholder="Enter your city here" enterButton="Search" />
             </div>

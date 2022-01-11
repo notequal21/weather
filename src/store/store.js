@@ -1,12 +1,12 @@
 
 let store = {
-  currentLocation: 'none',
+  currentLocation: 'москва',
   coord: {
     lon: 0,
     lat: 0
   },
   weather: {
-    icon: 'https://openweathermap.org/img/wn/01d@2x.png',
+    icon: '',
     desc: 'none',
     feelsLike: 0,
     temp: {
