@@ -16,7 +16,7 @@ body {
   padding: 0 15px;
 }
 .wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh + 100px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
