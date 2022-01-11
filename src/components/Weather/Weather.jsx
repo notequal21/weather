@@ -13,7 +13,7 @@ export const getWeatherInfo = () => {
       store.currentLocation = response.data.name
       store.coord.lon = response.data.coord.lon
       store.coord.lat = response.data.coord.lat
-      store.weather.icon = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      store.weather.iconURL = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
       store.weather.desc = response.data.weather[0].description
       store.weather.temp.current = Math.round(response.data.main.temp)
       store.weather.temp.feelsLike = Math.round(response.data.main.feels_like)
@@ -24,7 +24,8 @@ export const getWeatherInfo = () => {
       instance.get(`onecall?lat=${store.coord.lat}&lon=${store.coord.lon}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
         .then(response => {
           store.days.forEach((item, index) => {
-            item.icon = response.data.daily[index].weather[0].icon
+            item.iconURL = `https://openweathermap.org/img/wn/${response.data.daily[index].weather[0].icon}@2x.png`
+            item.desc = response.data.daily[index].weather[0].description
             item.temp.day = Math.round(response.data.daily[index].temp.day)
             item.temp.feelsLike.day = Math.round(response.data.daily[index].feels_like.day)
             item.date.day = new Date(response.data.daily[index].dt * 1000).getDay()
@@ -45,7 +46,7 @@ let CurrentWeather = (props) => {
           Текущая погода
         </div>
         <div className={`${style.weatherBody__ico}`}>
-          <img src={store.weather.icon} alt="weather ico" />
+          <img src={store.weather.iconURL} alt="weather ico" />
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>
@@ -112,10 +113,16 @@ let WeatherDay = (props) => {
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
+            <img src={props.iconURL} alt="weather icon" />
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
             Температура {props.dayTemp}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             Ощущается как {props.feelsLike}°
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            {props.desc}
           </div>
         </div>
       </div>
@@ -126,7 +133,8 @@ let daysList = []
 setInterval(() => {
   daysList = store.days.map((item, index) => index === 0 ? ''
     : <WeatherDay
-      key={item.id} id={item.id} day={store.days[index].date.day}
+      key={item.id} id={item.id} iconURL={store.days[index].iconURL}
+      day={store.days[index].date.day} desc={store.days[index].desc}
       date={store.days[index].date.current} dayTemp={store.days[index].temp.day}
       feelsLike={store.days[index].temp.feelsLike.day} />)
 }, 100)

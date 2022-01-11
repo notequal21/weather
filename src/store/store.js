@@ -6,7 +6,7 @@ let store = {
     lat: 0
   },
   weather: {
-    icon: '',
+    iconURL: '',
     desc: 'none',
     feelsLike: 0,
     temp: {
@@ -18,8 +18,10 @@ let store = {
 
   days: [
     {
-      icon: '',
+      iconURL: '',
       id: 0,
+      desc: '',
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -34,6 +36,7 @@ let store = {
     {
       icon: '',
       id: 1,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -48,6 +51,7 @@ let store = {
     {
       icon: '',
       id: 2,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -62,6 +66,7 @@ let store = {
     {
       icon: '',
       id: 3,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -76,6 +81,7 @@ let store = {
     {
       icon: '',
       id: 4,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -90,6 +96,7 @@ let store = {
     {
       icon: '',
       id: 5,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -104,6 +111,7 @@ let store = {
     {
       icon: '',
       id: 6,
+      desc: '',
       date: {
         day: '',
         current: '',
@@ -118,6 +126,7 @@ let store = {
     {
       icon: '',
       id: 7,
+      desc: '',
       date: {
         day: '',
         current: '',
