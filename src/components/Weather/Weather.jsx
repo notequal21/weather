@@ -26,6 +26,10 @@ instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units
         store.days.forEach((item, index) => {
           item.temp.day = Math.round(response.data.daily[index].temp.day)
           item.temp.feelsLike.day = Math.round(response.data.daily[index].feels_like.day)
+          item.date.day = new Date(response.data.daily[index].dt * 1000).getDay()
+          item.date.current = new Date(response.data.daily[index].dt * 1000)
+            .toLocaleString().split(',')[0]
+          // console.log(new Date(response.data.daily[index].dt * 1000).getDay().toLocaleString());
         })
       })
   })
@@ -72,7 +76,9 @@ let WeatherDay = (props) => {
     <>
       <div className={`${style.weatherBody__daysItem}`}>
         <div className={`${style.weatherBody__title}`}>
-          Tuesday
+          {props.day}
+          <br />
+          {props.date}
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>
@@ -89,9 +95,11 @@ let WeatherDay = (props) => {
 }
 let daysList = []
 setInterval(() => {
-  daysList = store.days.map((item, index) => <WeatherDay
-    key={item.id} id={item.id} dayTemp={store.days[index].temp.day}
-    feelsLike={store.days[index].temp.feelsLike.day} />)
+  daysList = store.days.map((item, index) => index === 0 ? ''
+    : <WeatherDay
+      key={item.id} id={item.id} day={store.days[index].date.day}
+      date={store.days[index].date.current} dayTemp={store.days[index].temp.day}
+      feelsLike={store.days[index].temp.feelsLike.day} />)
 }, 100)
 
 let Weather = () => {

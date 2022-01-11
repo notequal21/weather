@@ -1,5 +1,6 @@
 import style from "./Header.module.scss"
 import { Input } from 'antd';
+import logoIco from '../../assets/icons/sun.png'
 
 const { Search } = Input;
 
@@ -10,7 +11,7 @@ let Header = () => {
         <div className={`container`}>
           <div className={`${style.headerBody}`}>
             <div className={`${style.headerBody__logo}`}>
-              Weather App
+              <img src={logoIco} alt="" /> Weather App
             </div>
             <div className={`${style.headerbody__search}`}>
               <Search

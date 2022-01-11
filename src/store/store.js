@@ -18,6 +18,10 @@ let store = {
   days: [
     {
       id: 0,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
@@ -27,6 +31,10 @@ let store = {
     },
     {
       id: 1,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
@@ -36,6 +44,10 @@ let store = {
     },
     {
       id: 2,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
@@ -45,6 +57,10 @@ let store = {
     },
     {
       id: 3,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
@@ -54,6 +70,10 @@ let store = {
     },
     {
       id: 4,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
@@ -63,6 +83,36 @@ let store = {
     },
     {
       id: 5,
+      date: {
+        day: '',
+        current: '',
+      },
+      temp: {
+        day: 0,
+        feelsLike: {
+          day: 0
+        }
+      }
+    },
+    {
+      id: 6,
+      date: {
+        day: '',
+        current: '',
+      },
+      temp: {
+        day: 0,
+        feelsLike: {
+          day: 0
+        }
+      }
+    },
+    {
+      id: 7,
+      date: {
+        day: '',
+        current: '',
+      },
       temp: {
         day: 0,
         feelsLike: {
