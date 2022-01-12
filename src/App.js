@@ -1,17 +1,18 @@
 import './App.css';
 import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import Weather from './components/Weather/Weather';
+// import Header from './components/Header/Header';
+import WeatherContainer from './components/Weather/WeatherContainer';
 
 function App() {
   return (
     <div className="wrapper">
 
-      <Header />
+      {/* <Header /> */}
 
       <div className='content'>
 
-        <Weather />
+        {/* <Weather /> */}
+        <WeatherContainer />
 
       </div>
 

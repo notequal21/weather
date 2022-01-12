@@ -21,7 +21,6 @@ let store = {
       iconURL: '',
       id: 0,
       desc: '',
-      desc: '',
       date: {
         day: '',
         current: '',
