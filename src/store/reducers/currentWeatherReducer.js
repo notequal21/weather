@@ -1,8 +1,9 @@
+import { getWeatherInfoAPI } from "../../api/api"
 
 const SET_CURRENT_LOCATION = 'currentWeather/SET-CURRENT-LOCATION'
 
 let initialState = {
-  currentLocation: 'москва',
+  currentLocation: 'moscow',
   coord: {
     lon: 0,
     lat: 0
@@ -25,7 +26,8 @@ const currentWeatherReducer = (state = initialState, action) => {
 
     case SET_CURRENT_LOCATION:
       return {
-        ...state
+        ...state,
+        currentLocation: action.payload
       }
 
     default:
@@ -35,6 +37,13 @@ const currentWeatherReducer = (state = initialState, action) => {
 
 }
 
+// export const setCurrentLocation = (SET_CURRENT_LOCATION, currentLocation) =>
+//   ({ SET_CURRENT_LOCATION, currentLocation })
 
+// export const requestCurrentLocation = (location) => async (dispatch) => {
+//   let data = await getWeatherInfoAPI.getCurrentWeather(location)
+//   console.log(data.name);
+//   dispatch(setCurrentLocation(data.name))
+// }
 
 export default currentWeatherReducer
