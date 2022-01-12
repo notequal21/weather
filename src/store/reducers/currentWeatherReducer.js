@@ -35,4 +35,6 @@ const currentWeatherReducer = (state = initialState, action) => {
 
 }
 
+
+
 export default currentWeatherReducer
