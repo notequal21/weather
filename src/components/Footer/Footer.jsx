@@ -28,7 +28,7 @@ let Footer = () => {
                 </a>
               </div>
               <div className={`${style.footerBody__socialsItem}`}>
-                <a target={`_blank`} href="https://github.com/notequal21">
+                <a target={`_blank`} href="https://github.com/notequal21/weather">
                   <img src={githubIco} alt="" />
                 </a>
               </div>
