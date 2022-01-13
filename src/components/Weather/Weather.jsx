@@ -12,25 +12,25 @@ let CurrentWeather = ({ store }, ...props) => {
           Текущая погода
         </div>
         <div className={`${style.weatherBody__ico}`}>
-          <img src={`https://openweathermap.org/img/wn/${store.weather.iconURL}@2x.png`} alt="weather ico" />
+          <img src={`https://openweathermap.org/img/wn/${store.weather.iconID}@2x.png`} alt="weather ico" />
         </div>
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            {/* Температура {store.weather.temp.current}° */}
+            Температура {store.weather.temp.current}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            {/* Ощущается как {store.weather.temp.feelsLike}° */}
+            Ощущается как {store.weather.temp.feelsLike}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             {store.weather.desc}
           </div>
           <Divider />
           <div className={`${style.weatherItem__contentItem}`}>
-            {/* Coord lon: {store.coord.lon} */}
+            Coord lon: {store.coord.lon}
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            {/* Coord lat: {store.coord.lat} */}
+            Coord lat: {store.coord.lat}
           </div>
         </div>
       </div>

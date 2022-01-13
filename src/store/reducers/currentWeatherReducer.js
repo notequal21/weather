@@ -10,11 +10,11 @@ let initialState = {
     lat: 0
   },
   weather: {
-    iconURL: '01d',
-    desc: 'none',
-    feelsLike: 0,
+    iconID: '01d',
+    descriptoin: 'none',
     temp: {
       current: '0',
+      feelsLike: 0,
       min: '0',
       max: '0'
     }
@@ -33,12 +33,16 @@ const currentWeatherReducer = (state = initialState, action) => {
     case SET_WEATHER_INFO:
       return {
         ...state,
+        coord: {
+          lon: action.payload.coord.lon,
+          lat: action.payload.coord.lat
+        },
         weather: {
-          iconURL: action.payload.icon,
-          desc: action.payload.description,
-          feelsLike: 0,
+          iconID: action.payload.weather[0].icon,
+          desc: action.payload.weather[0].description,
           temp: {
-            current: '0',
+            current: action.payload.main.temp,
+            feelsLike: action.payload.main.feels_like,
             min: '0',
             max: '0'
           }
