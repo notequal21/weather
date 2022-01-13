@@ -1,6 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { connect } from "react-redux"
+import { getWeatherInfoAPI } from "../../api/api"
 import { requestCurrentLocation } from "../../store/reducers/currentWeatherReducer"
 import store from "../../store/redux"
 import Weather from "./Weather"
@@ -13,24 +14,24 @@ let WeatherContainer = (props) => {
   const currentWeather = useSelector(store => store.currentWeather)
 
 
-  let location = 'sarapul'
+  const [location, changeLocation] = useState('sarapul')
 
   const setCurrentLocation = () => {
     dispatch({ type: 'currentWeather/SET-CURRENT-LOCATION', payload: location })
   }
 
+  const setCurrentWeatherInfo = async () => {
+    const weatherInfo = await getWeatherInfoAPI.getCurrentWeather(location)
+    dispatch({ type: 'currentWeather/SET-WEATHER-INFO', payload: weatherInfo.weather[0] })
+  }
+
   useEffect(() => {
     if (store.currentWeather.currentLocation !== location) {
       setCurrentLocation()
+      setCurrentWeatherInfo()
     }
   })
-  // setCurrentLocation('sarapul')
 
-  // props.getLocation(props.currentWeather.currentLocation)
-
-  // useEffect(() => {
-  //   props.getLocation(props.currentWeather.currentLocation)
-  // })
 
   return (
     <Weather store={store} currentWeather={currentWeather} />
@@ -41,11 +42,11 @@ export default WeatherContainer
 
 
 
-let mapStateToProps = (state) => {
-  return {
-    store: state,
-    currentWeather: state.currentWeather
-  }
-}
+// let mapStateToProps = (state) => {
+//   return {
+//     store: state,
+//     currentWeather: state.currentWeather
+//   }
+// }
 
 // export default connect(mapStateToProps, {})(WeatherContainer)

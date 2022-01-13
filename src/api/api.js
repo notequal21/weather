@@ -6,9 +6,9 @@ const instance = axios.create({
 
 export const getWeatherInfoAPI = {
 
-  getCurrentWeather(currentLocation) {
+  getCurrentWeather(location) {
     return (
-      instance.get(`weather?q=${currentLocation}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
+      instance.get(`weather?q=${location}&appid=83d9c12644f83eb94f3ad2d262c259e2&units=metric&lang=ru`)
         .then(response => response.data)
     )
   }

@@ -1,6 +1,7 @@
 import { getWeatherInfoAPI } from "../../api/api"
 
 const SET_CURRENT_LOCATION = 'currentWeather/SET-CURRENT-LOCATION'
+const SET_WEATHER_INFO = 'currentWeather/SET-WEATHER-INFO'
 
 let initialState = {
   currentLocation: 'moscow',
@@ -9,7 +10,7 @@ let initialState = {
     lat: 0
   },
   weather: {
-    iconURL: '',
+    iconURL: '01d',
     desc: 'none',
     feelsLike: 0,
     temp: {
@@ -28,6 +29,20 @@ const currentWeatherReducer = (state = initialState, action) => {
       return {
         ...state,
         currentLocation: action.payload
+      }
+    case SET_WEATHER_INFO:
+      return {
+        ...state,
+        weather: {
+          iconURL: action.payload.icon,
+          desc: action.payload.description,
+          feelsLike: 0,
+          temp: {
+            current: '0',
+            min: '0',
+            max: '0'
+          }
+        }
       }
 
     default:
