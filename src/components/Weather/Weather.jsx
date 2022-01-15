@@ -3,8 +3,6 @@ import style from "./Weather.module.scss"
 
 let CurrentWeather = ({ store }, ...props) => {
 
-  console.log(store);
-
   return (
     <>
       <div className={`${style.weatherBody__current}`}>
@@ -96,7 +94,7 @@ let CurrentWeather = ({ store }, ...props) => {
 //   )
 // }
 
-let Weather = ({ store, currentWeather }, ...props) => {
+let Weather = ({ store, currentWeather, setCurrentWeatherInfo }, ...props) => {
 
   // getWeatherInfo(store)
 
@@ -112,6 +110,11 @@ let Weather = ({ store, currentWeather }, ...props) => {
 
   return (
     <>
+      <button onClick={() => {
+        setCurrentWeatherInfo('sarapul')
+      }}>
+        changeLocation
+      </button>
       <div className={`${style.weather}`}>
         <div className="container">
 

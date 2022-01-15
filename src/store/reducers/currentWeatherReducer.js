@@ -24,15 +24,10 @@ let initialState = {
 const currentWeatherReducer = (state = initialState, action) => {
 
   switch (action.type) {
-
-    case SET_CURRENT_LOCATION:
-      return {
-        ...state,
-        currentLocation: action.payload
-      }
     case SET_WEATHER_INFO:
       return {
         ...state,
+        currentLocation: action.payload.name,
         coord: {
           lon: action.payload.coord.lon,
           lat: action.payload.coord.lat
