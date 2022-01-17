@@ -14,20 +14,13 @@ let WeatherContainer = (props) => {
   const currentWeather = useSelector(store => store.currentWeather)
   // const [location, changeLocation] = useState('sarapul')
 
-  const setCurrentWeatherInfo = async (location) => {
-    const weatherInfo = await getWeatherInfoAPI.getCurrentWeather(location)
-    if (store.currentWeather.currentLocation !== weatherInfo.name) {
-      dispatch({ type: 'currentWeather/SET-WEATHER-INFO', payload: weatherInfo })
-    }
-  }
-
   useEffect(() => {
     // setCurrentWeatherInfo('moscow')
   })
 
   return (
     <>
-      <Weather setCurrentWeatherInfo={setCurrentWeatherInfo} store={store} currentWeather={currentWeather} />
+      <Weather store={store} currentWeather={currentWeather} />
     </>
   )
 }

@@ -110,11 +110,6 @@ let Weather = ({ store, currentWeather, setCurrentWeatherInfo }, ...props) => {
 
   return (
     <>
-      <button onClick={() => {
-        setCurrentWeatherInfo('sarapul')
-      }}>
-        changeLocation
-      </button>
       <div className={`${style.weather}`}>
         <div className="container">
 
