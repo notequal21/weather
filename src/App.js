@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getWeatherInfoAPI } from './api/api';
@@ -15,6 +16,20 @@ function App() {
     if (store.currentWeather.currentLocation !== weatherInfo.name) {
       dispatch({ type: 'currentWeather/SET-WEATHER-INFO', payload: weatherInfo })
     }
+  }
+
+  const daysWeather = useSelector(store => store.weatherDaysOfWeek)
+  const setDaysWeatherInfo = async (lat, lon) => {
+    if (store.currentWeather.coord.lat !== lat) {
+      const daysWeatherInfo = await getWeatherInfoAPI.getDaysWeather(lat, lon)
+      dispatch({ type: 'weatherDaysOfWeek/SET-DAYS-WEATHER-INFO', payload: daysWeatherInfo.daily })
+    }
+  }
+
+  useEffect = () => {
+    setInterval(() => {
+      setDaysWeatherInfo('53.7978', '56.4763')
+    }, 2000)
   }
 
   return (

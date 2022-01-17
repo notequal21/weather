@@ -12,15 +12,14 @@ let WeatherContainer = (props) => {
   const dispatch = useDispatch()
   const store = useSelector(store => store)
   const currentWeather = useSelector(store => store.currentWeather)
-  // const [location, changeLocation] = useState('sarapul')
 
   useEffect(() => {
-    // setCurrentWeatherInfo('moscow')
+
   })
 
   return (
     <>
-      <Weather store={store} currentWeather={currentWeather} />
+      <Weather days={store.weatherDaysOfWeek.days} store={store} currentWeather={currentWeather} />
     </>
   )
 }

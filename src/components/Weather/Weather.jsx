@@ -36,69 +36,75 @@ let CurrentWeather = ({ store }, ...props) => {
   )
 }
 
-// let WeatherDay = ({ store }, ...props) => {
+let WeatherDay = ({ store }, ...props) => {
 
-//   const weekDays = [
-//     'Воскресенье',
-//     'Понедельник',
-//     'Вторник',
-//     'Среда',
-//     'Четверг',
-//     'Пятница',
-//     'Суббота'
-//   ]
+  const weekDays = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота'
+  ]
 
-//   let currentDay = weekDays[props.day]
+  let currentDay = weekDays[props.day]
 
-//   const monthsList = [
-//     'Января',
-//     'Февраля',
-//     'Марта',
-//     'Апреля',
-//     'Мая',
-//     'Июня',
-//     'Июля',
-//     'Августа',
-//     'Сентября',
-//     'Ноября',
-//     'Декабря',
-//   ];
+  const monthsList = [
+    'Января',
+    'Февраля',
+    'Марта',
+    'Апреля',
+    'Мая',
+    'Июня',
+    'Июля',
+    'Августа',
+    'Сентября',
+    'Ноября',
+    'Декабря',
+  ];
 
-//   let currentMonth = monthsList[Number(props.date[1])]
+  // let currentMonth = monthsList[Number(props.date[1])]
+  let currentMonth = monthsList[0]
 
-//   return (
-//     <>
-//       <div className={`${style.weatherBody__daysItem}`}>
-//         <div className={`${style.weatherBody__title}`}>
-//           {currentDay}
-//           <br />
-//           {props.date[0]} {currentMonth}
-//         </div>
-//         <Divider />
-//         <div className={`${style.weatherItem__content}`}>
-//           <div className={`${style.weatherItem__contentItem}`}>
-//             <img src={props.iconURL} alt="weather icon" />
-//           </div>
-//           <div className={`${style.weatherItem__contentItem}`}>
-//             Температура {props.dayTemp}°
-//           </div>
-//           <div className={`${style.weatherItem__contentItem}`}>
-//             Ощущается как {props.feelsLike}°
-//           </div>
-//           <div className={`${style.weatherItem__contentItem}`}>
-//             {props.desc}
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
+  return (
+    <>
+      <div className={`${style.weatherBody__daysItem}`}>
+        <div className={`${style.weatherBody__title}`}>
+          {currentDay}
+          <br />
+          {/* {props.date[0]} {currentMonth} */}
+        </div>
+        <Divider />
+        <div className={`${style.weatherItem__content}`}>
+          <div className={`${style.weatherItem__contentItem}`}>
+            <img src={props.iconURL} alt="weather icon" />
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            {/* Температура {props.dayTemp}° */}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            {/* Ощущается как {props.feelsLike}° */}
+          </div>
+          <div className={`${style.weatherItem__contentItem}`}>
+            {/* {props.desc} */}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
 
-let Weather = ({ store, currentWeather, setCurrentWeatherInfo }, ...props) => {
+let Weather = ({ store, days, currentWeather, setCurrentWeatherInfo }, ...props) => {
 
-  // getWeatherInfo(store)
+  // console.log(days);
 
   let daysList = []
+  daysList = days.map((item, index) => index === 0 ? ''
+    : <WeatherDay
+      key={item.id} id={item.id} iconURL={days[index].iconURL}
+    />)
+
   // setInterval(() => {
   //   daysList = store.days.map((item, index) => index === 0 ? ''
   //     : <WeatherDay
@@ -123,7 +129,7 @@ let Weather = ({ store, currentWeather, setCurrentWeatherInfo }, ...props) => {
 
             <div className={`${style.weatherBody__days}`}>
 
-              {/* {daysList} */}
+              {daysList}
 
             </div>
           </div>
