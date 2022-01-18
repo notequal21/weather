@@ -26,16 +26,10 @@ function App() {
     }
   }
 
-  useEffect = () => {
-    setInterval(() => {
-      setDaysWeatherInfo('53.7978', '56.4763')
-    }, 2000)
-  }
-
   return (
     <div className="wrapper">
 
-      <Header setCurrentWeatherInfo={setCurrentWeatherInfo} />
+      <Header setDaysWeatherInfo={setDaysWeatherInfo} setCurrentWeatherInfo={setCurrentWeatherInfo} />
 
       <div className='content'>
 

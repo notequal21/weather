@@ -4,9 +4,15 @@ import logoIco from '../../assets/icons/sun.png'
 
 const { Search } = Input;
 
-let Header = ({ setCurrentWeatherInfo }) => {
+let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo }) => {
   return (
     <>
+      <button onClick={(e) => {
+        e.preventDefault()
+        setDaysWeatherInfo('53.7978', '56.4763')
+      }}>
+        Setup days weather info
+      </button>
       <div className={`${style.header}`}>
         <div className={`container`}>
           <div className={`${style.headerBody}`}>
