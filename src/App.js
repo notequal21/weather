@@ -15,10 +15,10 @@ function App() {
     const weatherInfo = await getWeatherInfoAPI.getCurrentWeather(location)
     if (store.currentWeather.currentLocation !== weatherInfo.name) {
       dispatch({ type: 'currentWeather/SET-WEATHER-INFO', payload: weatherInfo })
+      setDaysWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon)
     }
   }
 
-  const daysWeather = useSelector(store => store.weatherDaysOfWeek)
   const setDaysWeatherInfo = async (lat, lon) => {
     if (store.currentWeather.coord.lat !== lat) {
       const daysWeatherInfo = await getWeatherInfoAPI.getDaysWeather(lat, lon)
@@ -29,11 +29,10 @@ function App() {
   return (
     <div className="wrapper">
 
-      <Header setDaysWeatherInfo={setDaysWeatherInfo} setCurrentWeatherInfo={setCurrentWeatherInfo} />
+      <Header coords={store.currentWeather.coord} setDaysWeatherInfo={setDaysWeatherInfo} setCurrentWeatherInfo={setCurrentWeatherInfo} />
 
       <div className='content'>
 
-        {/* <Weather /> */}
         <WeatherContainer />
 
       </div>

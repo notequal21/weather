@@ -4,15 +4,9 @@ import logoIco from '../../assets/icons/sun.png'
 
 const { Search } = Input;
 
-let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo }) => {
+let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo, coords, ...props }) => {
   return (
     <>
-      <button onClick={(e) => {
-        e.preventDefault()
-        setDaysWeatherInfo('53.7978', '56.4763')
-      }}>
-        Setup days weather info
-      </button>
       <div className={`${style.header}`}>
         <div className={`container`}>
           <div className={`${style.headerBody}`}>
@@ -23,6 +17,7 @@ let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo }) => {
               <Search
                 onSearch={(value) => {
                   setCurrentWeatherInfo(value)
+                  // setDaysWeatherInfo(coords.lat, coords.lon)
                 }}
                 size="large" placeholder="Enter your city here" enterButton="Search" />
             </div>
