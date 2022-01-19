@@ -39,7 +39,6 @@ let CurrentWeather = ({ store }, ...props) => {
 let WeatherDay = (props) => {
 
   let date = new Date(props.date * 1000)
-  // console.log(date.getDate());
 
   const weekDays = [
     'Воскресенье',

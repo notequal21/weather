@@ -17,7 +17,6 @@ let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo, coords, ...props }) =
               <Search
                 onSearch={(value) => {
                   setCurrentWeatherInfo(value)
-                  // setDaysWeatherInfo(coords.lat, coords.lon)
                 }}
                 size="large" placeholder="Enter your city here" enterButton="Search" />
             </div>
