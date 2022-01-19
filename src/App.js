@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getWeatherInfoAPI } from './api/api';
 import './App.css';
+import EnterLocationPopup from './components/EnterLocationPopup/EnterLocationPopup';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import WeatherContainer from './components/Weather/WeatherContainer';
@@ -27,9 +28,14 @@ function App() {
   return (
     <div className="wrapper">
 
-      <Header coords={store.currentWeather.coord} setDaysWeatherInfo={setDaysWeatherInfo} setCurrentWeatherInfo={setCurrentWeatherInfo} />
+      <Header coords={store.currentWeather.coord} setCurrentWeatherInfo={setCurrentWeatherInfo} />
 
       <div className='content'>
+
+        {
+          store.currentWeather.currentLocation === 'none' ? <EnterLocationPopup setCurrentWeatherInfo={setCurrentWeatherInfo} />
+            : ''
+        }
 
         <WeatherContainer />
 
