@@ -15,10 +15,10 @@ let CurrentWeather = ({ store }, ...props) => {
         <Divider />
         <div className={`${style.weatherItem__content}`}>
           <div className={`${style.weatherItem__contentItem}`}>
-            Температура {store.weather.temp.current}°
+            Температура {Math.round(store.weather.temp.current)}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Ощущается как {store.weather.temp.feelsLike}°
+            Ощущается как {Math.round(store.weather.temp.feelsLike)}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             {store.weather.desc}
@@ -82,10 +82,10 @@ let WeatherDay = (props) => {
             <img src={`https://openweathermap.org/img/wn/${props.iconID}@2x.png`} alt="weather icon" />
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Температура {props.dayTemp}°
+            Температура {Math.round(props.dayTemp)}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
-            Ощущается как {props.feelsLike}°
+            Ощущается как {Math.round(props.feelsLike)}°
           </div>
           <div className={`${style.weatherItem__contentItem}`}>
             {props.desc}
