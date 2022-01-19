@@ -1,9 +1,15 @@
 import style from './EnterLocationPopup.module.scss'
 import { Input } from 'antd';
+import { getCurrentWeatherInfo } from '../../store/reducers/redux-thunk/currentWeather';
+import { useDispatch } from 'react-redux';
 
 const { Search } = Input;
 
+
 let EnterLocationPopup = ({ setCurrentWeatherInfo, ...props }) => {
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className={`${style.popup}`}>
@@ -16,7 +22,7 @@ let EnterLocationPopup = ({ setCurrentWeatherInfo, ...props }) => {
               <div className={`${style.popupBody__contentSearch}`}>
                 <Search
                   onSearch={(value) => {
-                    setCurrentWeatherInfo(value)
+                    dispatch(getCurrentWeatherInfo(value))
                   }}
                   size="large" placeholder="Enter your city here" enterButton="Search" />
               </div>

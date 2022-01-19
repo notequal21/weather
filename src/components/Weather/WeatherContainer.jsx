@@ -9,7 +9,7 @@ let WeatherContainer = (props) => {
 
   return (
     <>
-      <Weather days={store.weatherDaysOfWeek.days} store={store} currentWeather={currentWeather} />
+      <Weather days={store.weatherDaysOfWeek.days} currentWeather={currentWeather} />
     </>
   )
 }

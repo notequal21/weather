@@ -1,7 +1,7 @@
 import { Divider } from "antd"
 import style from "./Weather.module.scss"
 
-let CurrentWeather = ({ store }, ...props) => {
+let CurrentWeather = ({ store, ...props }) => {
 
   return (
     <>
@@ -97,7 +97,7 @@ let WeatherDay = (props) => {
 }
 
 
-let Weather = ({ store, days, currentWeather, setCurrentWeatherInfo }, ...props) => {
+let Weather = ({ days, currentWeather, ...props }) => {
 
   let daysList = []
   daysList = days.map((item, index) => index === 0 ? ''

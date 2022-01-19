@@ -1,10 +1,15 @@
 import style from "./Header.module.scss"
 import { Input } from 'antd';
 import logoIco from '../../assets/icons/sun.png'
+import { getCurrentWeatherInfo } from "../../store/reducers/redux-thunk/currentWeather";
+import { useDispatch } from "react-redux";
 
 const { Search } = Input;
 
 let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo, coords, ...props }) => {
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className={`${style.header}`}>
@@ -16,7 +21,7 @@ let Header = ({ setCurrentWeatherInfo, setDaysWeatherInfo, coords, ...props }) =
             <div className={`${style.headerbody__search}`}>
               <Search
                 onSearch={(value) => {
-                  setCurrentWeatherInfo(value)
+                  dispatch(getCurrentWeatherInfo(value))
                 }}
                 size="large" placeholder="Enter your city here" enterButton="Search" />
             </div>
