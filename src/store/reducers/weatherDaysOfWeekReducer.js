@@ -40,4 +40,6 @@ const weatherDaysOfWeekReducer = (state = initialState, action) => {
 
 }
 
+export const setDaysWeatherInfoAction = (payload) => ({ type: SET_DAYS_WEATHER_INFO, payload })
+
 export default weatherDaysOfWeekReducer

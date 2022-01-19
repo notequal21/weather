@@ -49,4 +49,6 @@ const currentWeatherReducer = (state = initialState, action) => {
 
 }
 
+export const setWeatherInfoAction = (payload) => ({ type: SET_WEATHER_INFO, payload })
+
 export default currentWeatherReducer

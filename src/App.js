@@ -6,6 +6,8 @@ import EnterLocationPopup from './components/EnterLocationPopup/EnterLocationPop
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import WeatherContainer from './components/Weather/WeatherContainer';
+import { setWeatherInfoAction } from './store/reducers/currentWeatherReducer';
+import { setDaysWeatherInfoAction } from './store/reducers/weatherDaysOfWeekReducer';
 
 function App() {
   const store = useSelector(store => store)
@@ -13,7 +15,7 @@ function App() {
   const setCurrentWeatherInfo = async (location) => {
     const weatherInfo = await getWeatherInfoAPI.getCurrentWeather(location)
     if (store.currentWeather.currentLocation !== weatherInfo.name) {
-      dispatch({ type: 'currentWeather/SET-WEATHER-INFO', payload: weatherInfo })
+      dispatch(setWeatherInfoAction(weatherInfo))
       setDaysWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon)
     }
   }
@@ -21,7 +23,7 @@ function App() {
   const setDaysWeatherInfo = async (lat, lon) => {
     if (store.currentWeather.coord.lat !== lat) {
       const daysWeatherInfo = await getWeatherInfoAPI.getDaysWeather(lat, lon)
-      dispatch({ type: 'weatherDaysOfWeek/SET-DAYS-WEATHER-INFO', payload: daysWeatherInfo.daily })
+      dispatch(setDaysWeatherInfoAction(daysWeatherInfo.daily))
     }
   }
 
